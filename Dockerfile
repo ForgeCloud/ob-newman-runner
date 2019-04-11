@@ -5,7 +5,8 @@ WORKDIR /opt/newman-runner
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 RUN yarn install
+COPY run.sh run.sh
 
 COPY app app
 
-ENTRYPOINT ["node", "-r", "esm", "app/index.mjs"]
+ENTRYPOINT ["./run.sh"]
