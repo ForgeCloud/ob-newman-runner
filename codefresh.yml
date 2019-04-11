@@ -1,0 +1,5 @@
+steps:
+  build-docker-image:
+    type: build
+    title: "Build newman-runner docker image"
+    image_name: obri/newman-runner
