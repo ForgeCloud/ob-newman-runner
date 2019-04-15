@@ -9,4 +9,4 @@ COPY run.sh run.sh
 
 COPY app app
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["/opt/newman-runner/run.sh"]
