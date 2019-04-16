@@ -1,3 +1,3 @@
 #!/bin/sh
 
-node -r esm app/index.mjs $*
+node /opt/newman-runner/app/index.js $*
