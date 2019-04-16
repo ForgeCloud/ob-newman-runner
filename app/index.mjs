@@ -56,12 +56,16 @@ async function main() {
   checkArgs(options)
 
 
-  const env = await getEnv(options.environment.toLowerCase())
-  const envJSON = await getEnvJSON(env.uid, options.updateEnvironment || [])
-  const collection = await getCollection(options.collection.toLowerCase())
-  const collectionJSON = await getCollectionJSON(collection.id)
-  console.log(`Running newman environment=${env.name} collection=${collection.name} collection_id=${collection.id}`)
-  runNewman(collectionJSON, envJSON)
+  try {
+    const env = await getEnv(options.environment.toLowerCase())
+    const envJSON = await getEnvJSON(env.uid, options.updateEnvironment || [])
+    const collection = await getCollection(options.collection.toLowerCase())
+    const collectionJSON = await getCollectionJSON(collection.id)
+    console.log(`Running newman environment=${env.name} collection=${collection.name} collection_id=${collection.id}`)
+    runNewman(collectionJSON, envJSON)
+  } catch (error) {
+    console.log(`Failed to run newman tests error=${error}`)
+  }
 }
 
 main()
