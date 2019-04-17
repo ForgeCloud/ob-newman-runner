@@ -64,7 +64,8 @@ async function main() {
     console.log(`Running newman environment=${env.name} collection=${collection.name} collection_id=${collection.id}`)
     runNewman(collectionJSON, envJSON)
   } catch (error) {
-    console.log(`Failed to run newman tests error=${error}`)
+    console.log(`${error}`)
+    process.exit(1)
   }
 }
 
