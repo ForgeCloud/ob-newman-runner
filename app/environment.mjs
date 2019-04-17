@@ -15,9 +15,9 @@ export async function getEnv(env) {
     });
     if (matchingEnvs.length > 1) {
       const envNames = matchingEnvs.map(e => e.name)
-      throw new Error(`Found more than one matching environment [${envNames.toString()}]`)
+      throw new Error(`Found more than one matching environment [${envNames.toString()}] env=${env}`)
     } else if (matchingEnvs.length == 0) {
-      throw new Error("Found no matching environment")
+      throw new Error(`Found no matching environment env=${env}`)
     }
     return matchingEnvs[0]
   } catch (error) {
