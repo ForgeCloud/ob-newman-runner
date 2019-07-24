@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "command-line-args": "^5.1.1",
     "esm": "^3.2.22",
+    "evil-dns": "^0.2.0",
     "newman": "^4.4.1"
   }
 }
