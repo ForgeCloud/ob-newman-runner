@@ -60,8 +60,9 @@ async function main() {
     const env = await getEnv(options.environment.toLowerCase())
     const envJSON = await getEnvJSON(env.uid, options.updateEnvironment || [])
     const collection = await getCollection(options.collection.toLowerCase())
-    const collectionJSON = await getCollectionJSON(collection.id)
-    console.log(`Running newman environment=${env.name} collection=${collection.name} collection_id=${collection.id}`)
+    console.log(collection)
+    const collectionJSON = await getCollectionJSON(collection.uid)
+    console.log(`Running newman environment=${env.name} collection=${collection.name} collection_id=${collection.uid}`)
     runNewman(collectionJSON, envJSON)
   } catch (error) {
     console.log(`${error}`)
