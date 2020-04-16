@@ -6,6 +6,9 @@ export async function getEnv(env) {
       headers: {
         "X-Api-Key": process.env.POSTMAN_API_TOKEN
       }
+    }).then(function (response) {
+      //console.log(response.data)
+      return response
     })
     const matchingEnvs = []
     resp.data.environments.forEach(element => {

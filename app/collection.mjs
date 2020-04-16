@@ -7,17 +7,23 @@ export async function getCollection(env) {
       headers: {
         "X-Api-Key": process.env.POSTMAN_API_TOKEN
       }
+    }).then(function (response) {
+      //console.log(response.data)
+      return response
     })
     resp.data.collections.forEach(element => {
       if (element.name.toLowerCase().match(env)) {
+        //console.log(`push=${element.name}`)
         matchingCollections.push(element)
       }
     });
   } catch (error) {
     console.log(`Could not get collections error=${error}`)
   }
+  //console.log(matchingCollections)
   if (matchingCollections.length > 1) {
     const envNames = matchingCollections.map(e => e.name)
+    console.log(`envNames=${envNames}`)
     throw new Error(`Found more than one matching collection [${envNames.toString()}]`)
   } else if (matchingCollections.length == 0) {
     throw new Error("Found no matching collection")
