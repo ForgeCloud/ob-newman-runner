@@ -1,10 +1,18 @@
+version: '1.0'
+stages: []
+
 steps:
   build-docker-image:
     type: build
     title: "Build newman-runner docker image"
     image_name: obri/newman-runner
-
+    disable_push: true
   push-docker-image:
     type: push
     title: "Push newman-runner docker image"
     candidate: ${{build-docker-image}}
+    registry: gcr
+    when:
+      branch:
+        only:
+          - master
